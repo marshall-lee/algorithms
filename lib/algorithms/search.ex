@@ -52,6 +52,10 @@ defmodule Algorithms.Search do
     @doc """
     Deep-first search
     """
+    def dfs(graph, goal) when is_record(graph, Algorithms.Graph) do
+      dfs(graph.nodes, goal, [])
+    end
+
     def dfs(node, goal, path) when is_record(node, Algorithms.Node) do
       path = path ++ [node]
       if node == goal do
@@ -68,12 +72,7 @@ defmodule Algorithms.Search do
       end
     end
 
-    def dfs([], goal, path) do
+    def dfs([], goal, _path) do
       {:error, goal}
     end
-
-    def dfs(graph, goal) when is_record(graph, Algorithms.Graph) do
-      dfs(graph.nodes, goal, [])
-    end
-
 end
