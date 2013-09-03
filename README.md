@@ -8,8 +8,9 @@ Important note: this modules can be slow, because it's my own polygon for learni
 # Already implemented
 
 * Binary Search
+* Deep First Search
 * GCD & LCM
 * Binary exponentiation
 * Sleep sort
 * Quick sort
-* Deep First Search
+* Merge sort
