@@ -57,7 +57,7 @@ defmodule Algorithms.Search do
     end
 
     def dfs(node, goal, path) when is_record(node, Algorithms.Node) do
-      path = path ++ [node]
+      path = Enum.concat(path, [node])
       if node == goal do
         {:ok, node, path}
       else
