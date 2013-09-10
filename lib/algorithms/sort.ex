@@ -13,7 +13,7 @@ defmodule Algorithms.Sort do
 
     def sleep(list) do
         pid = self
-        pids = Enum.map list, fn (x) -> spawn fn -> pid <- wait x end end
+        pids = Enum.map(list, fn (x) -> spawn fn -> pid <- wait x end end)
         sleep([], pids)
     end
 
@@ -50,7 +50,7 @@ defmodule Algorithms.Sort do
     end
 
     def quick([head|tail]) do
-        {left, right} = Enum.partition tail, &1 < head
+        {left, right} = Enum.partition(tail, &1 < head)
         quick(left) ++ [head] ++ quick(right)
     end
 
