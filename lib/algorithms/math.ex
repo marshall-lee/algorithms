@@ -26,7 +26,7 @@ defmodule Algorithms.Math do
     end
 
     def gcd([head|tail]) do
-        :lists.foldl gcd(&1, &2), head, tail
+        List.foldl(tail, head, gcd(&1, &2))
     end
 
     defp gcd(first, 0) do
@@ -52,7 +52,7 @@ defmodule Algorithms.Math do
     end
 
     def lcm([head|tail]) do
-        :lists.foldl lcm(&1, &2), head, tail
+        List.foldl(tail, head, lcm(&1, &2))
     end
 
     defp lcm(first, second) do
