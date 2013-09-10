@@ -56,23 +56,23 @@ defmodule Algorithms.Search do
       dfs(graph.nodes, goal, [])
     end
 
-    def dfs(node, goal, path) when is_record(node, Algorithms.Node) do
+    defp dfs(node, goal, path) when is_record(node, Algorithms.Node) do
       path = Enum.concat(path, [node])
-      if node == goal do
+      if node === goal do
         {:ok, node, path}
       else
         dfs(node.nodes, goal, path)
       end
     end
 
-    def dfs([head|tail], goal, path) do
+    defp dfs([head|tail], goal, path) do
       case dfs(head, goal, path) do
         {:ok, node, path} -> {:ok, node, path}
         _ -> dfs(tail, goal, path)
       end
     end
 
-    def dfs([], goal, _path) do
+    defp dfs([], goal, _path) do
       {:error, goal}
     end
 end

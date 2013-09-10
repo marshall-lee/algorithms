@@ -18,7 +18,7 @@ defmodule Algorithms.Sort do
     end
 
     defp sleep(list, []) do
-        Enum.reverse list
+        Enum.reverse(list)
     end
 
     defp sleep(list, pids) do
@@ -28,9 +28,8 @@ defmodule Algorithms.Sort do
     end
 
     defp wait(num) do
-        pid = self
         :timer.sleep num
-        {:ok, pid, num}
+        {:ok, self, num}
     end
 
     @doc """
