@@ -3,50 +3,52 @@ Code.require_file "test_helper.exs", __DIR__
 defmodule MathTest do
     use ExUnit.Case, async: true
 
+    import Algorithms.Math
+
     test "gcd" do
         numbers = [105, 70, 35, 15]
-        result = Algorithms.Math.gcd numbers
+        result = gcd numbers
         assert result == 5
     end
 
-    test "empty_gcd" do
+    test "empty gcd" do
         numbers = []
-        result = Algorithms.Math.gcd numbers
+        result = gcd numbers
         assert result == 1
     end
 
     test "lcm" do
         numbers = [3, 4, 20]
-        result = Algorithms.Math.lcm numbers
+        result = lcm numbers
         assert result == 60
     end
 
-    test "empty_lcm" do
+    test "empty lcm" do
         numbers = []
-        result = Algorithms.Math.lcm numbers
+        result = lcm numbers
         assert result == 1
     end
 
     test "factorial" do
         num = 5
-        result = Algorithms.Math.factorial(num)
+        result = factorial(num)
         assert result == 120
     end
 
-    test "binary_pow" do
+    test "binary pow" do
         first = 16
         second = 2
-        result = Algorithms.Math.binpow(first, second)
+        result = binpow(first, second)
         assert result == 256
         first = 8
         second = 8
-        result = Algorithms.Math.binpow(first, second)
+        result = binpow(first, second)
         assert result == 16777216
     end
 
     test "square" do
         number = 4
-        result = Algorithms.Math.square number
+        result = square number
         assert result == 16
     end
 
@@ -55,46 +57,56 @@ end
 defmodule SortTest do
     use ExUnit.Case, async: true
 
+    import Algorithms.Sort
+
     test "sleepsort" do
         numbers = [1, 2, 0, 10]
-        result = Algorithms.Sort.sleep numbers
+        result = sleep numbers
         assert result == [0, 1, 2, 10]
     end
 
     test "quicksort" do
         numbers = [12, 0, 1, 8, 10]
-        result = Algorithms.Sort.quick numbers
+        result = quick numbers
         assert result == [0, 1, 8, 10, 12]
     end
 
     test "mergesort" do
       numbers = [12, 0, 1, 8, 10, 2, 3, 4, 3]
-      result = Algorithms.Sort.merge_sort numbers
+      result = merge_sort numbers
       assert result == [0, 1, 2, 3, 3, 4, 8, 10, 12]
+    end
+
+    test "bubblesort" do
+      numbers = [10, 2, 3, 8, 12, 11]
+      result = bubble(numbers)
+      assert result = [2, 3, 8, 10, 11, 12]
     end
 end
 
 defmodule SearchTest do
     use ExUnit.Case, async: true
 
-    test "binary_search" do
+    import Algorithms.Search
+
+    test "binary" do
         l = [22, 32, 42, 52, 62]
-        {state, result} = Algorithms.Search.binary l, 52
+        {state, result} = binary l, 52
         assert state == :ok
         assert result == 4
     end
 
-    test "binary_search_error_handing" do
+    test "binary error handing" do
         l = [18, 28, 38]
         number = 1337
-        {state, result} = Algorithms.Search.binary l, number
+        {state, result} = binary l, number
         assert state == :error
         assert result == -1
     end
 
-    test "ne_item_binary_search" do
+    test "ne item binary" do
         l = [22, 32, 42, 52, 62]
-        {state, result} = Algorithms.Search.binary l, 1337
+        {state, result} = binary l, 1337
         assert state == :error
         assert result == -1
     end
@@ -104,12 +116,12 @@ defmodule SearchTest do
       erlang = Algorithms.Node.new(name: "Erlang")
       {:ok, cpp} = Algorithms.Node.insert(cpp, [erlang])
       graph = Algorithms.Graph.new(nodes: [cpp])
-      {state, node, path} = Algorithms.Search.dfs(graph, erlang)
+      {state, node, path} = dfs(graph, erlang)
       assert state == :ok
       assert node == erlang
       assert path == [cpp, erlang]
       elixir = Algorithms.Node.new(name: "Elixir")
-      {state, node} = Algorithms.Search.dfs(graph, elixir)
+      {state, node} = dfs(graph, elixir)
       assert state == :error
       assert node == elixir
     end
@@ -124,9 +136,9 @@ defmodule SearchTest do
       {:ok, grandfather} = Algorithms.Node.insert(grandfather, [mother])
       {:ok, grandmother} = Algorithms.Node.insert(grandmother, [father])
       family = Algorithms.Graph.new(nodes: [grandfather, grandmother])
-      {:ok, _, path} = Algorithms.Search.dfs(family, son)
+      {:ok, _, path} = dfs(family, son)
       assert path == [grandfather, mother, son]
-      {:ok, _, path} = Algorithms.Search.dfs(family, grandmother)
+      {:ok, _, path} = dfs(family, grandmother)
       assert path == [grandmother]
     end
 
@@ -134,6 +146,8 @@ end
 
 defmodule GraphTest do
     use ExUnit.Case, async: true
+
+    import Algorithms
 
     test "create_graph" do
         graph = Algorithms.Graph.new(nodes: [1, 2, 3])

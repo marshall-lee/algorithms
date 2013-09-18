@@ -85,4 +85,25 @@ defmodule Algorithms.Sort do
         xs |> Enum.drop(half) |> merge_sort
       )
     end
+
+    def bubble(list) do
+        bubble(list, [], true)
+    end
+
+    defp bubble([], list, true) do
+        Enum.reverse(list)
+    end
+
+    defp bubble([], list, false) do
+        bubble(Enum.reverse(list), [], true)
+    end
+
+    defp bubble([x, y | t], list, _done) when x > y do
+        bubble([x | t], [y | list], false)
+    end
+
+    defp bubble([x | t], list, done) do
+        bubble(t, [x | list], done)
+    end
+
 end
