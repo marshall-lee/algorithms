@@ -14,3 +14,4 @@ Important note: this modules can be slow, because it's my own polygon for learni
 * Sleep sort
 * Quick sort
 * Merge sort
+* Bubble sort
