@@ -147,34 +147,32 @@ end
 defmodule GraphTest do
     use ExUnit.Case, async: true
 
-    import Algorithms
-
-    test "create_graph" do
+    test "create graph" do
         graph = Algorithms.Graph.new(nodes: [1, 2, 3])
         assert graph.nodes == [1, 2, 3]
     end
 
-    test "insert_node_to_graph" do
+    test "insert node to graph" do
         first_node = Algorithms.Node.new(name: "Head")
         second_node = Algorithms.Node.new(name: "Tail")
         graph = Algorithms.Graph.new(nodes: [first_node, second_node])
         assert graph.nodes == [first_node, second_node]
     end
 
-    test "remove_node_from_graph" do
+    test "remove node from graph" do
         node = Algorithms.Node.new(name: "Head")
         graph = Algorithms.Graph.new(nodes: [node])
         {:ok, graph} = Algorithms.Graph.remove(graph, node)
         assert graph.nodes == []
     end
 
-    test "create_node" do
+    test "create node" do
         node = Algorithms.Node.new(name: "Python", nodes: ["PyPy"])
         assert node.name == "Python"
         assert node.nodes == ["PyPy"]
     end
 
-    test "append_children_to_node" do
+    test "append children to node" do
         node = Algorithms.Node.new(name: "Python", nodes: [])
         first_node = Algorithms.Node.new(name: "Head")
         second_node = Algorithms.Node.new(name: "Tail")
