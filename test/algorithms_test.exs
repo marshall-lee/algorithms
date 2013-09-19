@@ -6,49 +6,26 @@ defmodule MathTest do
     import Algorithms.Math
 
     test "gcd" do
-        numbers = [105, 70, 35, 15]
-        result = gcd numbers
+        result = gcd [105, 70, 35, 15]
         assert result == 5
     end
 
-    test "empty gcd" do
-        numbers = []
-        result = gcd numbers
-        assert result == 1
-    end
-
     test "lcm" do
-        numbers = [3, 4, 20]
-        result = lcm numbers
+        result = lcm [3, 4, 20]
         assert result == 60
     end
 
-    test "empty lcm" do
-        numbers = []
-        result = lcm numbers
-        assert result == 1
-    end
-
     test "factorial" do
-        num = 5
-        result = factorial(num)
-        assert result == 120
+        assert factorial(5) == 120
     end
 
     test "binary pow" do
-        first = 16
-        second = 2
-        result = binpow(first, second)
-        assert result == 256
-        first = 8
-        second = 8
-        result = binpow(first, second)
-        assert result == 16777216
+        assert binpow(16, 2) == 256
+        assert binpow(8, 8) == 16777216
     end
 
     test "square" do
-        number = 4
-        result = square number
+        result = square 4
         assert result == 16
     end
 
@@ -60,27 +37,23 @@ defmodule SortTest do
     import Algorithms.Sort
 
     test "sleepsort" do
-        numbers = [1, 2, 0, 10]
-        result = sleep numbers
+        result = sleep([1, 2, 0, 10])
         assert result == [0, 1, 2, 10]
     end
 
     test "quicksort" do
-        numbers = [12, 0, 1, 8, 10]
-        result = quick numbers
+        result = quick([12, 0, 1, 8, 10])
         assert result == [0, 1, 8, 10, 12]
     end
 
     test "mergesort" do
-      numbers = [12, 0, 1, 8, 10, 2, 3, 4, 3]
-      result = merge_sort numbers
+      result = merge_sort([12, 0, 1, 8, 10, 2, 3, 4, 3])
       assert result == [0, 1, 2, 3, 3, 4, 8, 10, 12]
     end
 
     test "bubblesort" do
-      numbers = [10, 2, 3, 8, 12, 11]
-      result = bubble(numbers)
-      assert result = [2, 3, 8, 10, 11, 12]
+      result = bubble([10, 2, 3, 8, 12, 11])
+      assert result == [2, 3, 8, 10, 11, 12]
     end
 end
 
@@ -90,31 +63,24 @@ defmodule SearchTest do
     import Algorithms.Search
 
     test "binary" do
-        l = [22, 32, 42, 52, 62]
-        {state, result} = binary l, 52
-        assert state == :ok
-        assert result == 4
+        {state, result} = binary [22, 32, 42, 52, 62], 52
+        assert {state, result} == {:ok, 4}
     end
 
     test "binary error handing" do
-        l = [18, 28, 38]
-        number = 1337
-        {state, result} = binary l, number
-        assert state == :error
-        assert result == -1
+        {state, result} = binary [18, 28, 38], 1337
+        assert {state, result} == {:error, -1}
     end
 
     test "ne item binary" do
-        l = [22, 32, 42, 52, 62]
-        {state, result} = binary l, 1337
-        assert state == :error
-        assert result == -1
+        {state, result} = binary [22, 32, 42, 52, 62], 1337
+        assert {state, result} == {:error, -1}
     end
 
     test "deep first search" do
       cpp = Algorithms.Node.new(name: "C++")
       erlang = Algorithms.Node.new(name: "Erlang")
-      {:ok, cpp} = Algorithms.Node.insert(cpp, [erlang])
+      {:ok, cpp} = Algorithms.Node.append(cpp, [erlang])
       graph = Algorithms.Graph.new(nodes: [cpp])
       {state, node, path} = dfs(graph, erlang)
       assert state == :ok
@@ -132,9 +98,9 @@ defmodule SearchTest do
       father = Algorithms.Node.new(name: "Bob")
       mother = Algorithms.Node.new(name: "Alice")
       son = Algorithms.Node.new(name: "Charlie")
-      {:ok, mother} = Algorithms.Node.insert(mother, [son])
-      {:ok, grandfather} = Algorithms.Node.insert(grandfather, [mother])
-      {:ok, grandmother} = Algorithms.Node.insert(grandmother, [father])
+      {:ok, mother} = Algorithms.Node.append(mother, [son])
+      {:ok, grandfather} = Algorithms.Node.append(grandfather, [mother])
+      {:ok, grandmother} = Algorithms.Node.append(grandmother, [father])
       family = Algorithms.Graph.new(nodes: [grandfather, grandmother])
       {:ok, _, path} = dfs(family, son)
       assert path == [grandfather, mother, son]
@@ -176,7 +142,7 @@ defmodule GraphTest do
         node = Algorithms.Node.new(name: "Python", nodes: [])
         first_node = Algorithms.Node.new(name: "Head")
         second_node = Algorithms.Node.new(name: "Tail")
-        {:ok, node} = Algorithms.Node.insert(node, [first_node, second_node])
+        {:ok, node} = Algorithms.Node.append(node, [first_node, second_node])
         assert node.nodes == [first_node, second_node]
     end
 end
