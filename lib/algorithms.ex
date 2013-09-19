@@ -7,25 +7,25 @@ defmodule Algorithms do
     defrecord Graph, nodes: [] do
 
         @doc """
-        Inserts given node to graph. Returns state (`:ok`) and new graph record.
+        Appends given node to graph. Returns state (`:ok`) and new graph record.
         """
 
-        def insert(graph, []) do
+        def append(graph, []) do
             {:ok, graph}
         end
 
-        def insert(graph, [head|tail]) do
-            {:ok, graph} = insert(graph, head)
-            insert(graph, tail)
+        def append(graph, [head|tail]) do
+            {:ok, graph} = append(graph, head)
+            append(graph, tail)
         end
 
-        def insert(graph, node) do
+        def append(graph, node) do
             nodes = graph.nodes ++ [node]
             {:ok, Graph.new(nodes: nodes)}
         end
 
         @doc """
-        Removes given node from graph. As `insert` function, returns state and new graph.
+        Removes given node from graph. As `append` function, returns state and new graph.
         """
 
         def remove(graph, []) do
@@ -46,16 +46,16 @@ defmodule Algorithms do
 
     defrecord Node, name: nil, nodes: [] do
 
-        def insert(parent, []) do
+        def append(parent, []) do
             {:ok, parent}
         end
 
-        def insert(parent, [head|tail]) do
-            {:ok, parent} = insert(parent, head)
-            insert(parent, tail)
+        def append(parent, [head|tail]) do
+            {:ok, parent} = append(parent, head)
+            append(parent, tail)
         end
 
-        def insert(parent, node) do
+        def append(parent, node) do
             nodes = parent.nodes ++ [node]
             {:ok, Node.new(name: parent.name, nodes: nodes)}
         end
