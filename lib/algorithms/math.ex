@@ -12,18 +12,13 @@ defmodule Algorithms.Math do
 
         numbers = [10, 20]
         gcd = Algorithms.Math.gcd numbers
-        IO.puts gcd
-        #=> 10
+        IO.puts gcd #=> 10
 
         numbers = [10, 20, 25]
         gcd = Algorithms.Math.gcd numbers
-        IO.puts gcd
-        #=> 5
+        IO.puts gcd #=> 5
 
     """
-    def gcd([]) do
-        1
-    end
 
     def gcd([head|tail]) do
         List.foldl(tail, head, gcd(&1, &2))
@@ -43,13 +38,9 @@ defmodule Algorithms.Math do
     # Example
         numbers = [4, 6]
         result = Algorithms.Math.lcm numbers
-        IO.puts result
-        #=> 12
+        IO.puts result #=> 12
 
     """
-    def lcm([]) do
-        1
-    end
 
     def lcm([head|tail]) do
         List.foldl(tail, head, lcm(&1, &2))
@@ -65,8 +56,7 @@ defmodule Algorithms.Math do
     # Example
         number = 5
         fac = Algorithms.Math.factorial number
-        IO.puts fac
-        #=> 120
+        IO.puts fac #=> 120
 
     """
     def factorial(first) do
