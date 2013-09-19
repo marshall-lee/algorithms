@@ -40,8 +40,7 @@ defmodule Algorithms.Sort do
 
         numbers = [3, 2, 5, 1, 4]
         sorted_numbers = Algorithms.Sort.quick numbers
-        IO.puts sorted_numbers
-        #=> [1, 2, 3, 4, 5]
+        IO.puts sorted_numbers #=> [1, 2, 3, 4, 5]
 
     """
     def quick([]) do
@@ -59,8 +58,7 @@ defmodule Algorithms.Sort do
 
     # Example
     
-        merge([1,3,5],[2,3,4,5])
-        #=> [1,2,3,3,4,5]
+        merge([1,3,5],[2,3,4,5]) #=> [1,2,3,3,4,5]
 
     """
     def merge(xs, []), do: xs
