@@ -15,12 +15,10 @@ defmodule Algorithms.Search do
 
         # Existing number
         {:ok, index} = Algorithms.Search.binary numbers, 17
-        IO.puts index
-        #=> 2
+        IO.puts index #=> 2
 
         {:error, index} = Algorithms.Search.binary numbers 1337
-        IO.puts index
-        #=> -1
+        IO.puts index #=> -1
 
     """
 
