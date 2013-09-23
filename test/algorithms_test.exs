@@ -146,3 +146,16 @@ defmodule GraphTest do
         assert node.nodes == [first_node, second_node]
     end
 end
+
+defmodule DistTest do
+    use ExUnit.Case, async: true
+
+    import Algorithms.Distribution
+
+    test "round robin" do
+        {:ok, item, stack} = robin([1, 2, 3])
+        assert item == 1
+        assert stack == [2, 3, 1]
+    end
+
+end
