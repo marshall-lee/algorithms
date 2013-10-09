@@ -8,10 +8,12 @@ Important note: this modules can be slow, because it's my own polygon for learni
 # Already implemented
 
 * Binary Search
-* Deep First Search
+* Deep-first Search
 * GCD & LCM
 * Binary exponentiation
 * Sleep sort
 * Quick sort
 * Merge sort
 * Bubble sort
+
+Algorithms can be better, if you spend some time to implement your favorite algorithm :)
