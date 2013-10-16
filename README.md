@@ -1,4 +1,4 @@
-# Algorithms [![Build Status](https://travis-ci.org/valmet/algorithms.png?branch=master)](https://travis-ci.org/valmet/algorithms)
+# Algorithms [![Build Status](https://travis-ci.org/dieselpoweredkitten/algorithms.png?branch=master)](https://travis-ci.org/dieselpoweredkitten/algorithms)
 
 Collection of algorithms, inspired by [nryoung/algorithms](https://github.com/nryoung/algorithms)
 
@@ -16,4 +16,4 @@ Important note: this modules can be slow, because it's my own polygon for learni
 * Merge sort
 * Bubble sort
 
-Algorithms can be better, if you spend some time to implement your favorite algorithm :)
+Algorithms can be better, if you spend some time to implement your favorite algorithm :-)
