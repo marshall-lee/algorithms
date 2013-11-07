@@ -48,7 +48,7 @@ defmodule Algorithms.Sort do
     end
 
     def quick([head|tail]) do
-        {left, right} = Enum.partition(tail, &1 < head)
+        {left, right} = Enum.partition(tail, fn (x) -> x < head end)
         quick(left) ++ [head] ++ quick(right)
     end
 
